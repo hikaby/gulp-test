@@ -31,3 +31,7 @@
     size: $size;
   }
 }
+
+@mixin mainGradient {
+  background: linear-gradient(to top right, $gradient-start, $gradient-end);
+}
