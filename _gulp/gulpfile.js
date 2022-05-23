@@ -44,11 +44,11 @@ const distPath = {
 /**
  * clean
  */
-const clean = () => {
-  return del([distBase + "/**"], {
-    force: true,
-  });
-};
+// const clean = () => {
+//   return del([distBase + "/**"], {
+//     force: true,
+//   });
+// };
 
 //ベンダープレフィックスを付与する条件
 const TARGET_BROWSERS = [
@@ -192,7 +192,7 @@ const watchFiles = () => {
  * 一度cleanでdistフォルダ内を削除し、最新のものをdistする
  */
 exports.default = gulp.series(
-  clean,
+  // clean,
   gulp.parallel(html, cssSass, js, imgImagemin, php, font),
   gulp.parallel(watchFiles, browserSyncFunc)
 );

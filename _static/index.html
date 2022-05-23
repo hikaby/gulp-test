@@ -1,408 +1,358 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="robots" content="noindex,nofollow">
-    <title>株式会社LIBASE｜人々をもっと自由に、幸せに。CREATE IT FOR LIBERTY.</title>
-    <meta name="description" content="どのような境遇でもあらゆる機会と可能性にアクセスできる社会をつくる。テクノロジーとビジョンを軸に社会を明確に変えていく、そんな会社です。">
-    <head prefix="og: http://ogp.me/ns#">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow">
+  <title>株式会社LIBASE｜人々をもっと自由に、幸せに。CREATE IT FOR LIBERTY.</title>
+  <meta name="description" content="どのような境遇でもあらゆる機会と可能性にアクセスできる社会をつくる。テクノロジーとビジョンを軸に社会を明確に変えていく、そんな会社です。">
+  <head prefix="og: http://ogp.me/ns#">
     <meta property="og:title" content="株式会社LIBASE｜人々をもっと自由に、幸せに。CREATE IT FOR LIBERTY.">
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="株式会社LIBASEコーポレートサイト">
     <meta property="og:url" content="ページURL（絶対パス）">
     <meta property="og:image" content="assets/img/ogp.png">
     <meta property="og:description" content="どのような境遇でもあらゆる機会と可能性にアクセスできる社会をつくる。テクノロジーとビジョンを軸に社会を明確に変えていく、そんな会社です。">
+    <link rel="stylesheet" type="text/css" href="assets/plugins/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="assets/plugins/slick/slick-theme.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
-  <body v-bind:class="classModalSet">
-    <div id="app">
-      <header id="header">
-        <div class="header-logo"><img src="assets/img/libase-logo.svg" /></div>
-        <div class="menu-box pc-none">
-          <div class="menu-button menu-open" @click.prevent="click">
-            <img src="assets/img/icon_menu-open.svg" alt="メニューを開く画像" />
+<body>
+  <div id="app">
+    <header id="header">
+      <div class="header-logo"><img src="assets/img/libase-logo.svg" /></div>
+      <div class="menu-box pc-none">
+        <div class="menu-button menu-open">
+          <img src="assets/img/icon_menu-open.svg" alt="メニューを開く画像" />
+        </div>
+        <div class="menu-modal">
+          <div class="menu-button menu-close">
+            <img src="assets/img/icon_menu-close.svg" alt="メニューを閉じる画像" />
           </div>
-          <div class="menu-modal" v-if="show">
-            <div class="menu-button menu-close" @click.prevent="click">
-              <img
-                src="assets/img/icon_menu-close.svg"
-                alt="メニューを閉じる画像"
-              />
-            </div>
-            <div class="menu-logo">
-              <img src="assets/img/libase-logo.svg" />
-            </div>
-            <nav>
-              <ul>
-                <li>
-                  <a href="#aboutUs">
-                    <span>当社について</span>
-                    <img src="assets/img/icon_arrow-down.svg" />
-                  </a>
-                </li>
-                <li>
-                  <a href="#ourBusiness">
-                    <span>事業内容</span>
-                    <span><img src="assets/img/icon_arrow-down.svg" /></span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#joinUs">
-                    <span>人材募集</span>
-                    <span><img src="assets/img/icon_arrow-down.svg" /></span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
-            <div class="menu-contact">
-              <a href="">
-                <img src="assets/img/icon_contact-mail.svg" />
-                お問い合わせ
-              </a>
-            </div>
+          <div class="menu-logo">
+            <a href="#" class="menu-link"><img src="assets/img/libase-logo.svg" /></a>
+          </div>
+          <nav>
+            <ul>
+              <li>
+                <a href="#aboutUs" class="menu-link">
+                  <span>当社について</span>
+                  <img src="assets/img/icon_arrow-down.svg" />
+                </a>
+              </li>
+              <li>
+                <a href="#ourBusiness" class="menu-link">
+                  <span>事業内容</span>
+                  <span><img src="assets/img/icon_arrow-down.svg" /></span>
+                </a>
+              </li>
+              <li>
+                <a href="#joinUs" class="menu-link">
+                  <span>人材募集</span>
+                  <span><img src="assets/img/icon_arrow-down.svg" /></span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <div class="menu-contact">
+            <a href="">
+              <img src="assets/img/icon_contact-mail.svg" />
+              お問い合わせ
+            </a>
           </div>
         </div>
-        <div class="menu-box sp-none">
-          <div class="pc-menu">
-            <nav>
-              <ul>
-                <li>
-                  <a href="#aboutUs">
-                    <span>当社について</span>
-                    <span><img src="assets/img/icon_arrow-down.svg" /></span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#ourBusiness">
-                    <span>事業内容</span>
-                    <span><img src="assets/img/icon_arrow-down.svg" /></span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#joinUs">
-                    <span>人材募集</span>
-                    <span><img src="assets/img/icon_arrow-down.svg" /></span>
-                  </a>
-                </li>
-                <li class="menu-contact">
-                  <a href="">
-                    <img src="assets/img/icon_contact-mail.svg" />
-                    お問い合わせ
-                  </a>
-                </li>
-              </ul>
-            </nav>
-          </div>
+      </div>
+      <div class="menu-box sp-none">
+        <div class="pc-menu">
+          <nav>
+            <ul>
+              <li>
+                <a href="#aboutUs">
+                  <span>当社について</span>
+                  <span><img src="assets/img/icon_arrow-down.svg" /></span>
+                </a>
+              </li>
+              <li>
+                <a href="#ourBusiness">
+                  <span>事業内容</span>
+                  <span><img src="assets/img/icon_arrow-down.svg" /></span>
+                </a>
+              </li>
+              <li>
+                <a href="#joinUs">
+                  <span>人材募集</span>
+                  <span><img src="assets/img/icon_arrow-down.svg" /></span>
+                </a>
+              </li>
+              <li class="menu-contact">
+                <a href="">
+                  <img src="assets/img/icon_contact-mail.svg" />
+                  お問い合わせ
+                </a>
+              </li>
+            </ul>
+          </nav>
         </div>
-      </header>
-      <section id="heroSection">
-        <div class="hero-body">
-          <div class="section-inner">
-            <h1 class="hero-title">
-              CREATE IT<br />FOR LIBERTY.
-              <span class="hero-title-sub">人々をもっと自由に、幸せに。</span>
-            </h1>
-            <p class="hero-text">
-              どのような境遇でもあらゆる機会と可能性にアクセスできる社会をつくる。テクノロジーとビジョンを軸に社会を明確に変えていく、そんな会社です。
-            </p>
-            <div class="scroll-line"><span>SCROLL</span></div>
+      </div>
+    </header>
+    <section id="heroSection">
+      <div class="hero-body">
+        <div class="section-inner">
+          <h1 class="hero-title">
+            CREATE IT<br />FOR LIBERTY.
+            <span class="hero-title-sub">人々をもっと自由に、幸せに。</span>
+          </h1>
+          <p class="hero-text">
+            どのような境遇でもあらゆる機会と可能性にアクセスできる社会をつくる。テクノロジーとビジョンを軸に社会を明確に変えていく、そんな会社です。
+          </p>
+          <div class="scroll-line"><span>SCROLL</span></div>
+        </div>
+      </div>
+    </section>
+    <main>
+      <div class="main-line-wrap"></div>
+      <section id="aboutUs">
+        <div class="section-inner">
+          <div class="section-heading">
+            <span class="heading-title-eng">Working Anywhere</span>
+            <h2 class="heading-title">
+              地球ではたらく
+              <span class="heading-title-sub">フルリモートワーク総勢100名以上</span>
+            </h2>
+          </div>
+          <p class="section-text">
+            「どこでも働けて暮らせる」<br />
+            場所から人を解放し、自分の可能性や価値を追求できる世界を創る。総勢100名以上がバーチャルオフィスやSlackを通じて協働しこれからの世界の未来を創造する、日本から世界を目指すテクノロジーカンパニーです。
+          </p>
+          <div class="section-button">
+            <a href="">
+              <span class="button-label">READ MORE</span>
+              <span class="button-icon"><img src="assets/img/icon_arrow-right.svg" 　alt="進むアイコン画像" /></span>
+            </a>
           </div>
         </div>
       </section>
-      <main>
-        <section id="aboutUs">
-          <div class="section-inner">
-            <div class="section-heading">
-              <span class="heading-title-eng">Working Anywhere</span>
-              <h2 class="heading-title">
-                地球ではたらく
-                <span class="heading-title-sub"
-                  >フルリモートワーク総勢100名以上</span
-                >
-              </h2>
-            </div>
-            <p class="section-text">
-              「どこでも働けて暮らせる」<br />
-              場所から人を解放し、自分の可能性や価値を追求できる世界を創る。総勢100名以上がバーチャルオフィスやSlackを通じて協働しこれからの世界の未来を創造する、日本から世界を目指すテクノロジーカンパニーです。
-            </p>
-            <div class="section-button">
-              <a href="">
-                <span class="button-label">READ MORE</span>
-                <span class="button-icon"
-                  ><img
-                    src="assets/img/icon_arrow-right.svg"
-                    　alt="進むアイコン画像"
-                /></span>
-              </a>
-            </div>
-          </div>
-        </section>
-        <section id="ourBusiness">
-          <div class="section-inner">
-            <div class="section-heading">
-              <span class="heading-title-eng">OUR <strong>BUSINESS</strong></span>
-              <h2 class="heading-title">
-                <img src="assets/img/jooi-logo.svg" alt="Jooiロゴ画像" />
-                <span class="heading-title-sub"
-                  >デザイナーオンデマンドサービス</span
-                >
-              </h2>
-            </div>
-            <h3 class="section-title">新時代の<br />働き方を加速させる</h3>
-            <p class="section-text">
-              上位5%デザイナーに個人価格・最短数時間で即発注できるサービスです。審査済みのトップデザイナーが多数在籍しています。
-            </p>
-            <div class="section-button">
-              <a href="">
-                <span class="button-label">READ MORE</span>
-                <span class="button-icon"
-                  ><img
-                    src="assets/img/icon_open-window.svg"
-                    alt="別ウィンドウでリンクを開く画像"
-                /></span>
-              </a>
-            </div>
-          </div>
-        </section>
-        <section id="topics">
-          <div class="section-inner">
-            <div class="section-heading">
-              <h2 class="heading-title">
-                TOPICS
-                <span class="heading-title-sub">お知らせ</span>
-              </h2>
-            </div>
-            <div class="section-box">
-              <carousel
-                :per-page="4"
-                :navigation-enabled="true"
-                navigation-prev-label="〈"
-                navigation-next-label="〉"
-                :speed="1000"
-              >
-                <slide>
-                  <div class="card-box">
-                    <div class="card-box-image">1</div>
-                    <div class="card-box-body">
-                      <ul class="card-box-tag">
-                        <li class="tag-icon tag-new">NEW</li>
-                        <li class="tag-date">2099.03.15</li>
-                      </ul>
-                      <h4 class="card-box-title">人々をもっと自由に、幸せに</h4>
-                      <p class="card-box-text">
-                        どのような境遇でもあらゆる機会と可能性にアクセスできる社会をつくる。
-                      </p>
-                      <a class="card-box-more">
-                        <span class="button-label">READ MORE</span>
-                        <span class="button-icon"
-                          ><img
-                            src="assets/img/icon_arrow-right.svg"
-                            　alt="進むアイコン画像"
-                        /></span>
-                      </a>
-                    </div>
-                  </div>
-                </slide>
-                <slide>
-                  <div class="card-box">
-                    <div class="card-box-image">2</div>
-                    <div class="card-box-body">
-                      <ul class="card-box-tag">
-                        <li class="tag-icon tag-new">NEW</li>
-                        <li class="tag-date">2099.03.20</li>
-                      </ul>
-                      <h4 class="card-box-title">地球ではたらく</h4>
-                      <p class="card-box-text">
-                        「どこでも働けて暮らせる」<br />場所から人を解放し、自分の可能性や価値を追求できる世界を創る。
-                      </p>
-                      <a class="card-box-more">
-                        <span class="button-label">READ MORE</span>
-                        <span class="button-icon"
-                          ><img
-                            src="assets/img/icon_arrow-right.svg"
-                            　alt="進むアイコン画像"
-                        /></span>
-                      </a>
-                    </div>
-                  </div>
-                </slide>
-                <slide>
-                  <div class="card-box">
-                    <div class="card-box-image">3</div>
-                    <div class="card-box-body">
-                      <ul class="card-box-tag">
-                        <li class="tag-icon tag-new">NEW</li>
-                        <li class="tag-date">2099.04.07</li>
-                      </ul>
-                      <h4 class="card-box-title">新時代の働き方を加速させる</h4>
-                      <p class="card-box-text">
-                        上位5%デザイナーに個人価格・最短数時間で即発注できるサービスです。審査済みのトップデザイナーが多数在籍しています。
-                      </p>
-                      <a class="card-box-more">
-                        <span class="button-label">READ MORE</span>
-                        <span class="button-icon"
-                          ><img
-                            src="assets/img/icon_arrow-right.svg"
-                            　alt="進むアイコン画像"
-                        /></span>
-                      </a>
-                    </div>
-                  </div>
-                </slide>
-                <slide>
-                  <div class="card-box">
-                    <div class="card-box-image"><span>4</span></div>
-                    <div class="card-box-body">
-                      <ul class="card-box-tag">
-                        <li class="tag-icon tag-new">NEW</li>
-                        <li class="tag-date">2099.05.10</li>
-                      </ul>
-                      <h4 class="card-box-title">日本発のグローバルスタ...</h4>
-                      <p class="card-box-text">
-                        JOOi(デザインサービス)デザイナー・コーディネーターを積極募集中。事業・採用に関するご相談はご気軽にお問い合わせ
-                      </p>
-                      <a class="card-box-more">
-                        <span class="button-label">READ MORE</span>
-                        <span class="button-icon"
-                          ><img
-                            src="assets/img/icon_arrow-right.svg"
-                            　alt="進むアイコン画像"
-                        /></span>
-                      </a>
-                    </div>
-                  </div>
-                </slide>
-              </carousel>
-            </div>
-          </div>
-        </section>
-        <section id="joinUs">
-          <div class="joinUs-box">
-            <div class="joinUs-box-image">
-              <img src="assets/img/joinUs-text.svg" />
-            </div>
-          </div>
-          <div class="section-inner">
-            <div class="section-heading">
-              <div class="heading-title-eng">LET'S WORK TOGETHER</div>
-              <h2 class="heading-title">
-                JOIN US
-                <img src="assets/img/joinUs-ribbon.svg" />
-                <span class="heading-title-sub"
-                  >日本発のグローバル<br class="pc-none">スタートアップへ</span
-                >
-              </h2>
-            </div>
-            <div class="section-box">
-              <div class="balloon-box-wrap">
-                <div class="balloon-box">
-                  JOOi(デザインサービス)<br class="pc-none">デザイナー・コーディネーターを<br class="pc-none">積極募集中
-                </div>
-              </div>
-              <div class="section-button-wrap">
-                <div class="section-button">
-                  <a href="">
-                    <div class="button-label">WEB DESIGNER</div>
-                    <div class="button-text">フルリモート/複業/案件単位可能</div>
-                    <span class="button-icon"
-                      ><img
-                        src="assets/img/icon_open-window.svg"
-                        　alt="別ウィンドウでリンクを開く"
-                    /></span>
-                  </a>
-                </div>
-                <div class="section-button">
-                  <a href="">
-                    <div class="button-label">JOOi COODINATOR</div>
-                    <div class="button-text">フルリモート/複業可能能</div>
-                    <span class="button-icon"
-                      ><img
-                        src="assets/img/icon_open-window.svg"
-                        alt="別ウィンドウでリンクを開く画像"
-                    /></span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
-      <footer id="footer">
+      <section id="ourBusiness">
         <div class="section-inner">
-          <div class="footer-title">CREATE IT<br />FOR LIBERTY.</div>
-          <div class="footer-title-sub">人々をもっと自由に、幸せに。</div>
-          <div class="copyright">© LIBASE INC. ALL RIGHT RESERVED</div>
-          <nav></nav>
-        </div>
-        <div class="menu-box sp-none">
-          <div class="pc-menu">
-            <nav>
-              <ul>
-                <li>
-                  <a href="#aboutUs">
-                    <span>当社について</span>
-                    <span><img src="assets/img/icon_arrow-down.svg" /></span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#ourBusiness">
-                    <span>事業内容</span>
-                    <span><img src="assets/img/icon_arrow-down.svg" /></span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#joinUs">
-                    <span>人材募集</span>
-                    <span><img src="assets/img/icon_arrow-down.svg" /></span>
-                  </a>
-                </li>
-                <li class="menu-contact">
-                  <a href="">
-                    <img src="assets/img/icon_contact-mail.svg" />
-                    お問い合わせ
-                  </a>
-                </li>
-              </ul>
-            </nav>
+          <div class="section-heading">
+            <span class="heading-title-eng">OUR <strong>BUSINESS</strong></span>
+            <h2 class="heading-title">
+              <img src="assets/img/jooi-logo.svg" alt="Jooiロゴ画像" />
+              <span class="heading-title-sub">デザイナーオンデマンドサービス</span>
+            </h2>
+          </div>
+          <h3 class="section-title">新時代の<br />働き方を加速させる</h3>
+          <p class="section-text">
+            上位5%デザイナーに個人価格・最短数時間で即発注できるサービスです。審査済みのトップデザイナーが多数在籍しています。
+          </p>
+          <div class="section-button">
+            <a href="">
+              <span class="button-label">READ MORE</span>
+              <span class="button-icon"><img src="assets/img/icon_open-window.svg" alt="別ウィンドウでリンクを開く画像" /></span>
+            </a>
           </div>
         </div>
-      </footer>
-    </div>
+      </section>
+      <section id="topics">
+        <div class="section-inner">
+          <div class="section-heading">
+            <h2 class="heading-title">
+              TOPICS
+              <span class="heading-title-sub">お知らせ</span>
+            </h2>
+          </div>
+          <div class="section-box">
+            <div class="slide-wrap">
+              <div class="slide-box">
+                <div class="card-box">
+                  <div class="card-box-image">1</div>
+                  <div class="card-box-body">
+                    <ul class="card-box-tag">
+                      <li class="tag-icon tag-new">NEW</li>
+                      <li class="tag-date">2099.03.15</li>
+                    </ul>
+                    <h4 class="card-box-title">人々をもっと自由に、幸せに</h4>
+                    <p class="card-box-text">
+                      どのような境遇でもあらゆる機会と可能性にアクセスできる社会をつくる。
+                    </p>
+                    <a href="" class="card-box-more">
+                      <span class="button-label">READ MORE</span>
+                      <span class="button-icon"><img src="assets/img/icon_arrow-right.svg" 　alt="進むアイコン画像" /></span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="slide-box">
+                <div class="card-box">
+                  <div class="card-box-image">2</div>
+                  <div class="card-box-body">
+                    <ul class="card-box-tag">
+                      <li class="tag-icon tag-new">NEW</li>
+                      <li class="tag-date">2099.03.20</li>
+                    </ul>
+                    <h4 class="card-box-title">地球ではたらく</h4>
+                    <p class="card-box-text">
+                      「どこでも働けて暮らせる」<br />場所から人を解放し、自分の可能性や価値を追求できる世界を創る。
+                    </p>
+                    <a href="" class="card-box-more">
+                      <span class="button-label">READ MORE</span>
+                      <span class="button-icon"><img src="assets/img/icon_arrow-right.svg" 　alt="進むアイコン画像" /></span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="slide-box">
+                <div class="card-box">
+                  <div class="card-box-image">3</div>
+                  <div class="card-box-body">
+                    <ul class="card-box-tag">
+                      <li class="tag-icon tag-new">NEW</li>
+                      <li class="tag-date">2099.04.07</li>
+                    </ul>
+                    <h4 class="card-box-title">新時代の働き方を加速させる</h4>
+                    <p class="card-box-text">
+                      上位5%デザイナーに個人価格・最短数時間で即発注できるサービスです。審査済みのトップデザイナーが多数在籍しています。
+                    </p>
+                    <a href="" class="card-box-more">
+                      <span class="button-label">READ MORE</span>
+                      <span class="button-icon"><img src="assets/img/icon_arrow-right.svg" 　alt="進むアイコン画像" /></span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="slide-box">
+                <div class="card-box">
+                  <div class="card-box-image"><span>4</span></div>
+                  <div class="card-box-body">
+                    <ul class="card-box-tag">
+                      <li class="tag-icon tag-new">NEW</li>
+                      <li class="tag-date">2099.05.10</li>
+                    </ul>
+                    <h4 class="card-box-title">日本発のグローバルスタ...</h4>
+                    <p class="card-box-text">
+                      JOOi(デザインサービス)デザイナー・コーディネーターを積極募集中。事業・採用に関するご相談はご気軽にお問い合わせ
+                    </p>
+                    <a href="" class="card-box-more">
+                      <span class="button-label">READ MORE</span>
+                      <span class="button-icon"><img src="assets/img/icon_arrow-right.svg" 　alt="進むアイコン画像" /></span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="slide-box">
+                <div class="card-box">
+                  <div class="card-box-image"><span>5</span></div>
+                  <div class="card-box-body">
+                    <ul class="card-box-tag">
+                      <li class="tag-icon tag-new">NEW</li>
+                      <li class="tag-date">2099.05.10</li>
+                    </ul>
+                    <h4 class="card-box-title">日本発のグローバルスタ...</h4>
+                    <p class="card-box-text">
+                      JOOi(デザインサービス)デザイナー・コーディネーターを積極募集中。事業・採用に関するご相談はご気軽にお問い合わせ
+                    </p>
+                    <a href="" class="card-box-more">
+                      <span class="button-label">READ MORE</span>
+                      <span class="button-icon"><img src="assets/img/icon_arrow-right.svg" 　alt="進むアイコン画像" /></span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="joinUs">
+        <div class="joinUs-box">
+          <div class="joinUs-box-image">
+            <img src="assets/img/joinUs-text.svg" />
+          </div>
+        </div>
+        <div class="section-inner">
+          <div class="section-heading">
+            <div class="heading-title-eng">LET'S WORK TOGETHER</div>
+            <h2 class="heading-title">
+              JOIN US
+              <img src="assets/img/joinUs-ribbon.svg" />
+              <span class="heading-title-sub">日本発のグローバル<br class="pc-none">スタートアップへ</span>
+            </h2>
+          </div>
+          <div class="section-box">
+            <div class="balloon-box-wrap">
+              <div class="balloon-box">
+                JOOi(デザインサービス)<br class="pc-none">デザイナー・コーディネーターを<br class="pc-none">積極募集中
+              </div>
+            </div>
+            <div class="section-button-wrap">
+              <div class="section-button">
+                <a href="">
+                  <div class="button-label">WEB DESIGNER</div>
+                  <div class="button-text">フルリモート/複業/案件単位可能</div>
+                  <span class="button-icon"><img src="assets/img/icon_open-window.svg" 　alt="別ウィンドウでリンクを開く" /></span>
+                </a>
+              </div>
+              <div class="section-button">
+                <a href="">
+                  <div class="button-label">JOOi COODINATOR</div>
+                  <div class="button-text">フルリモート/複業可能能</div>
+                  <span class="button-icon"><img src="assets/img/icon_open-window.svg" alt="別ウィンドウでリンクを開く画像" /></span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer id="footer">
+      <div class="section-inner">
+        <div class="footer-title">CREATE IT<br />FOR LIBERTY.</div>
+        <div class="footer-title-sub">人々をもっと自由に、幸せに。</div>
+        <div class="copyright">© LIBASE INC. ALL RIGHT RESERVED</div>
+        <nav></nav>
+      </div>
+      <div class="menu-box sp-none">
+        <div class="pc-menu">
+          <nav>
+            <ul>
+              <li>
+                <a href="#aboutUs">
+                  <span>当社について</span>
+                  <span><img src="assets/img/icon_arrow-down.svg" /></span>
+                </a>
+              </li>
+              <li>
+                <a href="#ourBusiness">
+                  <span>事業内容</span>
+                  <span><img src="assets/img/icon_arrow-down.svg" /></span>
+                </a>
+              </li>
+              <li>
+                <a href="#joinUs">
+                  <span>人材募集</span>
+                  <span><img src="assets/img/icon_arrow-down.svg" /></span>
+                </a>
+              </li>
+              <li class="menu-contact">
+                <a href="">
+                  <img src="assets/img/icon_contact-mail.svg" />
+                  お問い合わせ
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </footer>
+  </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.6/dist/vue.js"></script>
-    <script src="https://ssense.github.io/vue-carousel/js/vue-carousel.min.js"></script>
-    <script>
-      new Vue({
-        el: "#app",
-        data: {
-          show: false,
-        },
-        methods: {
-          click: function () {
-            this.show = !this.show;
-          },
-        },
-        components: {
-          carousel: VueCarousel.Carousel,
-          slide: VueCarousel.Slide,
-        },
-        watch: {
-          show: function () {
-            if ((show = true)) {
-              // document.querySelector("body").style.overflow = "hidden";
-              // console.log("表示です");
-              document.querySelector(".menu-open").style.display = "none";
-              document.querySelector(".menu-modal").style.display = "block";
-              document.querySelector(".menu-close").style.display = "block";
-            } else if ((show = false)) {
-              document.querySelector("body").style.overflow = "visible";
-              console.log("非表示です");
-            }
-          },
-        },
-      });
-    </script>
-  </body>
+  <script src="assets/plugins/jquery-3.6.0.slim.min.js"></script>
+  <script src="assets/plugins/slick/slick.min.js"></script>
+  <script src="assets/js/script01.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.6/dist/vue.js"></script>
+  <script src="https://ssense.github.io/vue-carousel/js/vue-carousel.min.js"></script> -->
+  <script>
+
+  </script>
+</body>
 </html>

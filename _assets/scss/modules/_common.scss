@@ -2,6 +2,27 @@
 @use '../setting/setting'as *;
 
 @import url(//fonts.googleapis.com/earlyaccess/notosanssc.css);
+@font-face {
+  font-family: 'NotoSansJP-Regular';
+  src: url('../../font/NotoSansJP-Regular.ttf') format('woff');
+}
+@font-face {
+  font-family: 'NotoSansJP-Bold';
+  src: url('../../font/NotoSansJP-Bold.ttf') format('woff');
+}
+@font-face {
+  font-family: 'Ubuntu-Regular';
+  src: url('../../font/Ubuntu-Regular.ttf') format('woff');
+}
+@font-face {
+  font-family: 'Ubuntu-Bold';
+  src: url('../../font/Ubuntu-Bold.ttf') format('woff');
+}
+
+p{
+  font-family: hannari;
+}
+
 
 * {
   margin: 0;
@@ -9,7 +30,12 @@
   box-sizing: border-box;
 }
 
-$font-cn: "Noto Sans SC",
+$NotoSans-R: "NotoSansJP-Regular",sans-serif;
+$NotoSans-B: "NotoSansJP-Bold",sans-serif;
+$Ubuntu-R: "Ubuntu-Regular",sans-serif;
+$Ubuntu-B: "Ubuntu-Bold",sans-serif;
+
+$font-cn: "NotoSansJP-Regular",
 "游ゴシック",
 YuGothic,
 "ヒラギノ角ゴ Pro",
@@ -17,9 +43,11 @@ YuGothic,
 "メイリオ",
 "Meiryo",
 sans-serif;
+
+
 $drop-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.1);
 
-html{
+html {
   scroll-behavior: smooth;
 }
 
@@ -32,187 +60,229 @@ a {
   text-decoration: none;
 }
 
-.pc-none{
+.pc-none {
   display: inline-block;
+
   @include pc {
     display: none;
   }
 }
-.sp-none{
+
+.sp-none {
   display: none;
+
   @include pc {
     display: inline-block;
   }
 }
 
+header {
+  max-height: 92px;
+  // background-color: rgba(255, 255, 255, 0.2);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 60px;
+
+  .header-logo {
+    position: absolute;
+    width: 64px;
+    z-index: 1;
+    margin: 1rem;
+    @include pc {
+      width: 110px;
+      margin: 40px;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+    }
+  }
+}
+
 .menu-box {
-    .menu-button {
-      background-color: #000;
+  .menu-button {
+    background-color: #000;
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 10px 1rem;
+    text-align: center;
+    z-index: 100;
+    border-radius: 0 0 0 20px;
+    z-index: 2;
+
+    @include pc {
+      display: none;
+    }
+
+    &.menu-open {
       position: fixed;
-      top: 0;
-      right: 0;
-      padding: 10px 1rem;
-      text-align: center;
-      z-index: 100;
-      border-radius: 0 0 0 20px;
       z-index: 2;
-      @include pc {
-        display: none;
-      }
+      opacity: 1;
 
-      &.menu-open {
-        position: absolute;
-        z-index: 2;
-      }
-
-      &.menu-close {
-        position: absolute;
-        z-index: 2;
+      &.passive {
+        opacity: 0;
+        z-index: 1;
       }
     }
 
-    .menu-modal {
-      // display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100vh;
-      width: 100vw;
-      background-color: $main-color;
-      opacity: 0.95;
-      padding: 10vh 20vw;
-      color: #fff;
-      z-index: 1;
-      @include pc {
-        display: block;
-        position: fixed;
-        top: 0;
-        right: 0;
-        z-index: 100;
-      }
-
-      .menu-logo {
-        width: 100%;
-        text-align: center;
-      }
-
-      nav {
-        margin: 32px 0;
-
-        ul {
-          list-style: none;
-          border-top: 1px solid rgba(255, 255, 255, 0.14);
-
-          li {
-            font-size: 16px;
-            line-height: 20px;
-            padding: 1rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            a {
-              width: 100%;
-              color: #fff;
-              display: flex;
-              align-items: center;
-              justify-content: space-between;
-            }
-          }
-        }
-      }
-
-      .menu-contact {
-        background-color: #000;
-        color: #FFF;
-        display: flex;
-        align-items: center;
-
-        a {
-          width: 100%;
-          padding: 1rem;
-          color: #fff;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          img{
-            margin-right: 1rem;
-          }
-        }
-      }
+    &.menu-close {
+      position: absolute;
     }
+  }
 
-    .pc-menu {
-      // display: none;
+  .menu-modal {
+    // opacity: 0;
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: $main-color;
+    padding: 10vh 20vw;
+    color: #fff;
+    z-index: 1;
+    opacity: 0.95;
+
+    @include pc {
+      display: block;
       position: fixed;
       top: 0;
       right: 0;
-      padding: 0;
-      color: #fff;
-      background-color: #00377E;
-      z-index: 1;
+      z-index: 100;
+    }
+  }
 
-      nav {
-        margin: 0;
+  .menu-logo {
+    width: 100%;
+    text-align: center;
+  }
 
-        ul {
-          list-style: none;
-          display: flex;
+  nav {
+    margin: 32px 0;
 
-          li {
-            font-size: 16px;
-            border-right: 1px solid rgba(255, 255, 255, 0.14);
-            padding: 8px 32px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+    ul {
+      list-style: none;
+      border-top: 1px solid rgba(255, 255, 255, 0.14);
 
-            a {
-              width: 100%;
-              color: #fff;
-              display: flex;
-              align-items: center;
-              justify-content: space-between;
-              img{
-                margin-left: 16px;
-              }
-            }
-          }
-        }
-      }
-
-      .menu-contact {
-        background-color: #000;
-        color: #FFF;
+      li {
+        font-size: 16px;
+        line-height: 20px;
+        padding: 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.14);
         display: flex;
         align-items: center;
+        justify-content: space-between;
 
         a {
           width: 100%;
-          padding: 1rem;
           color: #fff;
           display: flex;
           align-items: center;
-          justify-content: center;
-          img{
-            margin-right: 1rem;
+          justify-content: space-between;
+        }
+      }
+    }
+  }
+
+  .menu-contact {
+    background-color: #000;
+    color: #FFF;
+    display: flex;
+    align-items: center;
+
+    a {
+      width: 100%;
+      padding: 1rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        margin-right: 1rem;
+      }
+    }
+  }
+}
+
+.pc-menu {
+  // display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 0;
+  color: #fff;
+  background-color: #00377E;
+  z-index: 1;
+
+  nav {
+    margin: 0;
+
+    ul {
+      list-style: none;
+      display: flex;
+
+      li {
+        font-size: 16px;
+        border-right: 1px solid rgba(255, 255, 255, 0.14);
+        padding: 8px 32px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        a {
+          width: 100%;
+          color: #fff;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          img {
+            margin-left: 16px;
           }
         }
       }
     }
   }
+
+  .menu-contact {
+    background-color: #000;
+    color: #FFF;
+    display: flex;
+    align-items: center;
+
+    a {
+      width: 100%;
+      padding: 1rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        margin-right: 1rem;
+      }
+    }
+  }
+}
 
 section {
   width: 100%;
   // margin: 0 0 80px;
   padding: 5rem 1.8rem 3rem;
+
   @include pc {
     padding: 0;
   }
 
-  .section-inner{
+  .section-inner {
     width: 100%;
+
     @include pc {
       max-width: 1340px;
       margin: 0 auto;
@@ -225,6 +295,7 @@ section {
     line-height: 48px;
     font-weight: bold;
     letter-spacing: 0.1rem;
+
     @include pc {
       max-width: 480px;
     }
@@ -232,9 +303,10 @@ section {
     .heading-title-sub {
       color: $main-color;
       display: block;
-      font-size: 14px;
+      font-size: 0.875rem;
       line-height: 17px;
       font-weight: bold;
+
       @include pc {
         max-width: 480px;
       }
@@ -242,34 +314,43 @@ section {
   }
 
   .section-text {
-    font-size: 14px;
+    font-size: 0.875rem;
     line-height: 28px;
     letter-spacing: 0.1rem;
+
     @include pc {
       max-width: 420px;
     }
   }
 
   .section-button {
-    width: 56vw;
+    width: 200px;
     border: 2px solid #206DE4;
     background-color: #FFF;
     border-radius: 4px;
     box-shadow: $drop-shadow;
+
     @include pc {
-      max-width: 240px;
+      width: 240px;
     }
 
     // justify-content: center;
     a {
       padding: 1.2rem;
+      font-family: $NotoSans-B;
       font-size: 11px;
       line-height: 13px;
+      letter-spacing: 0.1rem;
       color: #206DE4;
       display: flex;
       align-items: center;
       justify-content: space-between;
       text-decoration: none;
+      @include pc {
+        font-size: 13px;
+        line-height: 16px;
+        letter-spacing: 0.1rem;
+      }
     }
 
     .button-label {
@@ -278,6 +359,11 @@ section {
       letter-spacing: 0.1rem;
       font-weight: bold;
       color: #000;
+      @include pc {
+        font-size: 13px;
+        line-height: 16px;
+        letter-spacing: 0.1rem;
+      }
     }
   }
 }
@@ -289,9 +375,11 @@ section {
   width: 100%;
   min-height: 100vh;
   padding: 0 0;
-  .section-inner{
+
+  .section-inner {
     width: 100%;
     padding: 0;
+
     @include pc {
       position: relative;
       max-width: 1340px;
@@ -306,13 +394,14 @@ section {
     width: 100%;
     padding: 48vh 1.6rem 3rem;
     min-height: 100vh;
+
     @include pc {
       padding: 0;
     }
 
 
     .heading-title-eng {
-      font-size: 14px;
+      font-size: 0.875rem;
       line-height: 16px;
     }
 
@@ -320,6 +409,11 @@ section {
       font-size: 44px;
       line-height: 51px;
       font-weight: bold;
+      font-family: $Ubuntu-B;
+      @include pc {
+        font-size: 83px;
+        line-height: 95px;
+      }
     }
 
     .hero-title-sub {
@@ -327,14 +421,23 @@ section {
       line-height: 25px;
       padding: 17px 0 29px;
       letter-spacing: 0.1rem;
+      font-family: $NotoSans-B;
+      @include pc {
+        font-size: 33px;
+        line-height: 40px;
+      }
     }
 
     .hero-text {
-      font-size: 14px;
+      font-size: 0.875rem;
       line-height: 28px;
       letter-spacing: 0.14rem;
+      font-family: $NotoSans-R;
+
       @include pc {
-        max-width: 420px;
+        font-size: 18px;
+        line-height: 36px;
+        max-width: 520px;
       }
     }
   }
@@ -344,10 +447,12 @@ section {
     right: 20px;
     bottom: 10px;
     height: 50px;
+
     @include pc {
       right: auto;
-      left: 0;
+      left: 50%;
       bottom: 0;
+      margin-left: -670px;
     }
 
     span {
@@ -355,42 +460,60 @@ section {
       left: -20px;
       top: -34px;
       color: #eee;
-      font-size: 0.7rem;
       letter-spacing: 0.05em;
-      transform:rotate(90deg);
+      transform: rotate(90deg);
+      font-family: $Ubuntu-B;
+      font-size: 10px;
+      line-height: 11px;
     }
 
     &::after {
       content: "";
       position: absolute;
       top: 0;
-      /*線の形状*/
       width: 1px;
       height: 30px;
       background: #eee;
       animation: pathmove 2.4s ease-in-out infinite;
       opacity: 0;
     }
+
     @keyframes pathmove {
-    0% {
-      height: 2px;
-      top: 0;
-      opacity: 0.5;
-    }
+      0% {
+        height: 2px;
+        top: 0;
+        opacity: 0.5;
+      }
 
-    30% {
-      height: 30px;
-      opacity: 1;
-    }
+      30% {
+        height: 30px;
+        opacity: 1;
+      }
 
-    100% {
-      height: 2px;
-      top: 50px;
-      opacity: 0.2;
+      100% {
+        height: 2px;
+        top: 50px;
+        opacity: 0.2;
+      }
     }
-  }
   }
 }
+main{
+  position: relative;
+  .main-line-wrap{
+    @include pc {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      margin-left: -670px;
+      width: 1340px;
+      height: 100%;
+      border: 1px solid #ECECEC;
+      z-index: -1;
+    }
+  }
+}
+
 
 #aboutUs {
   background-image: url(../img/aboutUs-bg001.svg);
@@ -398,19 +521,33 @@ section {
   background-size: 110%;
   background-repeat: no-repeat;
   padding: 6rem 1.8rem 3rem;
+
   @include pc {
     background-position: top right;
     background-size: 1000px;
     padding: 5rem 1.8rem 6rem;
   }
+  .section-inner {
+    @include pc {
+      padding: 2rem 80px 3rem;
+    }
+  }
 
   .heading-title-eng {
     display: block;
-    margin-bottom: 27px;
+    margin-bottom: 1.6875rem;
     // padding-left: 2rem;
     display: flex;
     align-items: center;
     justify-content: left;
+    font-family: $Ubuntu-R;
+    font-size: 0.875rem;
+    line-height: 16px;
+    letter-spacing: 0.1rem;
+    @include pc {
+      font-size: 20px;
+      line-height: 24px;
+    }
 
     &:before {
       border-top: 1px solid black;
@@ -419,17 +556,45 @@ section {
       margin-right: 10px;
     }
   }
-
-  .heading-title-sub {
-    margin-top: 12px;
+  .heading-title {
+    font-family: $NotoSans-B;
+    font-size: 40px;
+    line-height: 48px;
+    font-weight: bold;
+    letter-spacing: 0.1rem;
+    @include pc {
+      font-size: 60px;
+      line-height: 72px;
+    }
+    .heading-title-sub {
+      margin-top: 12px;
+      font-size: 0.875rem;
+      line-height: 17px;
+      font-family: $NotoSans-B;
+      @include pc {
+        margin-top: 22px;
+        font-size: 22px;
+        line-height: 26px;
+      }
+    }
   }
 
   .section-text {
     margin: 40px 0 48px;
+    font-family: $NotoSans-R;
+    font-size: 0.875rem;
+    line-height: 28px;
+    letter-spacing: 0.1rem;
+    @include pc {
+      max-width: 480px;
+      font-size: 18px;
+      line-height: 36px;
+    }
   }
 
   .section-button {
     border: none;
+    background-color: #F9F9F9;
 
     svg {
       fill: black;
@@ -444,55 +609,100 @@ section {
   background-size: 100%;
   background-repeat: no-repeat;
   padding: 2rem 1.8rem 3rem;
-  padding-bottom: 40vh;
+  padding-bottom: 42vh;
+
   @include pc {
     background-position: bottom right;
     padding: 2rem 1.8rem 6rem;
     background-image: url(../img/ourBusiness-bg002.svg);
     background-size: 1200px;
   }
+  .section-inner {
+    @include pc {
+      padding: 2rem 80px 3rem;
+    }
+  }
 
   .heading-title-eng {
     display: block;
     margin-bottom: 28px;
     color: #00377E;
+    font-family: $Ubuntu-R;
+    font-size: 0.875rem;
+    line-height: 19px;
+    letter-spacing: 0.1rem;
     @include pc {
       margin-left: -40px;
       margin-bottom: 80px;
+      font-size: 24px;
+      line-height: 1.6875rem;
     }
 
     strong {
       font-weight: bold;
+      font-family: $Ubuntu-B;
+      font-size: 16px;
+      line-height: 19px;
+      @include pc {
+        font-size: 1.6875rem;
+        line-height: 1.6875rem;
+      }
     }
   }
 
   .heading-title {
     img {
       width: 54vw;
+
       @include pc {
-        max-width: 280px;
+        max-width: 290px;
       }
     }
 
     .heading-title-sub {
+      font-family: $NotoSans-B;
       font-size: 11px;
       line-height: 13px;
-      padding: 12px 0 0;
+      color: #0F6DE8;
+      padding: 4px 0 0;
+      @include pc {
+        font-size: 18px;
+        line-height: 22px;
+        padding: 12px 0 0;
+      }
     }
   }
 
   .section-title {
-    font-size: 20px;
-    line-height: 32px;
+    font-family: $NotoSans-B;
+    font-size: 19px;
+    line-height: 30px;
+    letter-spacing: 0.675rem;
     margin: 40px auto 4px;
-    letter-spacing: 0.6rem;
+    @include pc {
+      font-size: 33px;
+      line-height: 60px;
+      letter-spacing: 1.275rem;
+      margin: 40px auto 16px;
+    }
   }
 
   .section-text {
+    font-family: $NotoSans-R;
     margin-bottom: 40px;
+    font-size: 14px;
+    line-height: 28px;
+    letter-spacing: 0.1rem;
+    @include pc {
+      font-size: 16px;
+      line-height: 32px;
+    }
   }
 
   .section-button {
+    margin-bottom: 10px;
+    background-color: transparent;
+
     .button-label {
       color: #226DE4;
     }
@@ -506,62 +716,124 @@ section {
 #topics {
   overflow: hidden;
   padding: 4rem 1.8rem 1rem;
+
   @include pc {
-    padding: 0;
+    padding: 0 0 3rem;
   }
 
-  .section-inner{
+  .section-inner {
     @include pc {
       max-width: 1340px;
       margin: 0 auto;
-      padding: 5rem 40px 3rem;
+      padding: 5rem 10px 3rem;
     }
   }
-
-  .heading-title {
-    text-align: center;
-    margin-bottom: 40px;
-    color: #00377E;
+  .section-heading{
+    padding: 0 40px;
     @include pc {
-      text-align: left;
+      padding: 0 20px;
     }
-
-    .heading-title-sub {
-      font-size: 15px;
-      line-height: 18px;
-      padding: 8px 0 0;
+    .heading-title {
+      text-align: center;
+      margin-bottom: 40px;
+      color: #00377E;
+      font-family: $Ubuntu-B;
+      font-size: 44px;
+      line-height: 77px;
       letter-spacing: 0.1rem;
+      @include pc {
+        text-align: left;
+        font-size: 60px;
+        line-height: 87px;
+      }
+
+      .heading-title-sub {
+        font-family: $NotoSans-B;
+        font-size: 15px;
+        line-height: 18px;
+        // padding: 8px 0 0;
+        letter-spacing: 0.1rem;
+      }
     }
   }
+  .slide-wrap {
+    .slick-prev:before,
+    .slick-next:before {
+      opacity: 1;
+    }
 
-  // .section-box {
-  //     padding: 1rem 0;
-  //     margin: 0 0 1rem;
-  // }
-  .VueCarousel {
-    position: relative;
-    padding: 0;
-    margin: 0;
+    .slick-prev.slick-disabled:before,
+    .slick-next.slick-disabled:before {
+      opacity: .15;
+    }
 
-    .VueCarousel-wrapper {
+    .slick-arrow:before {
+      content: "";
       width: 100%;
-      position: relative;
-      padding: 1rem 0;
-      // overflow: visible;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 100;
     }
-    .VueCarousel-dot{
-      margin-top: 0px!important;
-      padding: 0 10px!important;
-      .VueCarousel-dot-button {
-        background-color: #FFF !important;
-        border: 1px solid #00377E;
+
+    .slick-next {
+      width: 24px;
+      height: 24px;
+      right: -18px;
+      @include pc {
+        right: -22px;
       }
-      &.VueCarousel-dot--active {
-        .VueCarousel-dot-button {
-          background-color: #00377E !important;
-        }
+
+      &:before {
+        background: url(../img/slider_arrow-right.png);
+        background-size: contain;
       }
     }
+
+    .slick-prev {
+      width: 24px;
+      height: 24px;
+      left: -18px;
+      @include pc {
+        left: -22px;
+      }
+
+      &:before {
+        background: url(../img/slider_arrow-left.png);
+        background-size: contain;
+      }
+    }
+
+    .slick-slide {
+      padding: 0 0 18px;
+      @include pc {
+        padding: 0 0 24px;
+      }
+    }
+
+    .slick-dots li button:before {
+      border-radius: 50%;
+      width: 8px;
+      height: 8px;
+      content: '';
+      opacity: 1;
+      color: #FFF;
+      border: 1px solid #00377E;
+      background-color: #FFF;
+      @include pc {
+        width: 6px;
+        height: 6px;
+      }
+    }
+
+    .slick-dots li.slick-active button:before {
+      opacity: 1;
+      color: #00377E;
+      border: 1px solid #00377E;
+      background-color: #00377E;
+    }
+
   }
 
   .card-box {
@@ -571,6 +843,7 @@ section {
     background-color: #FFF;
     box-shadow: $drop-shadow;
     border-radius: 6px;
+    overflow: hidden;
 
     .card-box-image {
       background-color: #ECECEC;
@@ -595,10 +868,11 @@ section {
         display: flex;
         align-items: center;
         // justify-content: center;
-        margin-bottom: 1.2rem;
+        margin-bottom: 24px;
 
         .tag-icon {
           padding: 1px 4px;
+          font-family: $Ubuntu-R;
           font-size: 10px;
           line-height: 1rem;
           background-color: $main-color;
@@ -608,20 +882,24 @@ section {
         }
 
         .tag-date {
+          font-family: $NotoSans-R;
           font-size: 11px;
-          line-height: 14px;
+          line-height: 13px;
+          line-height: 0.875rem;
           ;
         }
       }
 
       .card-box-title {
+        font-family: $NotoSans-B;
         font-weight: bold;
         font-size: 16px;
-        line-height: 20px;
-        margin-bottom: 20px;
+        line-height: 19px;
+        margin-bottom: 16px;
       }
 
       .card-box-text {
+        font-family: $NotoSans-R;
         font-size: 14px;
         line-height: 28px;
         min-height: 112px;
@@ -638,11 +916,10 @@ section {
         .button-label {
           font-size: 10px;
           line-height: 12px;
+          color: #000;
         }
 
         .button-icon {
-          font-size: 10px;
-          line-height: 12px;
           padding-left: 0.5rem;
         }
       }
@@ -651,12 +928,14 @@ section {
 }
 
 #joinUs {
-  padding: 1rem 0 2rem;
+  padding: 0 0 2rem;
+  background-color: #F9F9F9;
+
   @include pc {
-    padding: 3rem 0 0;
+    padding: 0 0 0;
   }
 
-  .section-inner{
+  .section-inner {
     @include pc {
       max-width: none;
       margin: 0 auto;
@@ -666,12 +945,14 @@ section {
 
   .joinUs-box {
     background-image: url(../img/joinUs-bg001.png);
-    background-position: bottom;
+    background-position: top;
     background-size: 100%;
     background-repeat: no-repeat;
     position: relative;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
+    width: 100%;
     height: 46vh;
+
     @include pc {
       min-height: auto;
       height: 420px;
@@ -686,17 +967,19 @@ section {
       // bottom: 3rem;
       // left: 0;
       display: flex;
-      align-items: flex-end;
+      align-items: flex-start;
       justify-content: center;
-      padding: 1rem 1.8rem 6rem;
-      height: 100%;
+      padding: 8rem 1.8rem 1rem;
+      // height: 100%;
+
       @include pc {
-        padding: 1rem 1.8rem 6rem;
+        padding: 8rem 1.8rem 1rem;
       }
 
       img {
         width: 100%;
         display: block;
+
         @include pc {
           max-width: 720px;
         }
@@ -705,42 +988,60 @@ section {
   }
 
   .heading-title-eng {
+    font-family: $Ubuntu-B;
     color: #000;
     font-size: 22px;
     line-height: 32px;
-    font-weight: bold;
     text-align: center;
+    letter-spacing: 0.1rem;
+    @include pc {
+      font-size: 31px;
+      line-height: 45px;
+    }
   }
 
   .heading-title {
     text-align: center;
     margin-bottom: 1rem;
+    font-family: $Ubuntu-B;
     color: #00377E;
     font-size: 64px;
     line-height: 92px;
     position: relative;
+    letter-spacing: 0.185rem;
+
     @include pc {
       max-width: 640px;
       margin: 0 auto;
+      font-size: 91px;
+      line-height: 101px;
     }
-    img{
+
+    img {
       position: absolute;
       left: 0;
       top: 40px;
+
       @include pc {
-        left: 110px;
+        width: 52px;
+        left: 40px;
+        top: 30px;
       }
     }
 
     .heading-title-sub {
+      font-family: $NotoSans-B;
       font-size: 15px;
-      line-height: 24px;
+      line-height: 22px;
       padding: 4px 0 0;
       letter-spacing: 0.5rem;
       color: #000;
+
       @include pc {
         max-width: 640px;
-        margin: 0 auto;
+        margin: 0 auto 1.25rem;
+        font-size: 16px;
+        line-height: 19px;
       }
     }
   }
@@ -761,11 +1062,14 @@ section {
         position: relative;
         text-align: center;
         color: #FFF;
-        font-size: 14px;
-        line-height: 20px;
+        font-family: $NotoSans-B;
+        font-size: 0.875rem;
+        line-height: 24px;
+        letter-spacing: 0.1rem;
         font-weight: bold;
+
         @include pc {
-          max-width: 480px;
+          max-width: 590px;
           margin: 0 auto 30px;
           padding: 12px 0;
         }
@@ -773,7 +1077,7 @@ section {
         &:before {
           content: "";
           position: absolute;
-          bottom: -20px;
+          bottom: -16px;
           left: 50%;
           margin-left: -8px;
           border: 8px solid transparent;
@@ -788,29 +1092,31 @@ section {
       padding: 16px 1.8rem 0;
       border-top: 1px solid #ECECEC;
       border-bottom: 1px solid #ECECEC;
+
       @include pc {
         margin: 0 auto;
         display: flex;
         justify-content: center;
-        padding: 12px 0;
+        padding: 16px 0;
       }
 
       .section-button {
         width: 100%;
         border: none;
         background-color: #FFF;
-        border-radius: 3px;
+        border-radius: 6px;
         box-shadow: $drop-shadow;
         margin-bottom: 28px;
         position: relative;
+
         @include pc {
-          width: 380px;
+          width: 400px;
           max-width: none;
-          margin: 0 10px;
+          margin: 0 16px;
         }
 
         a {
-          padding: 1.6rem;
+          padding: 1.6rem 1.6rem 2rem;
           color: #206DE4;
           display: block;
           text-align: center;
@@ -819,20 +1125,25 @@ section {
         .button-label {
           border-left: none;
           padding-left: 0;
-          letter-spacing: 0.1rem;
-          font-weight: bold;
+          font-family: $Ubuntu-B;
           color: #00377E;
           font-size: 24px;
           line-height: 33px;
-          margin-bottom: 0.5rem;
+          letter-spacing: 0.1rem;
+          font-weight: bold;
+          @include pc {
+            font-size: 30px;
+            line-height: 49px;
+          }
         }
 
         .button-text {
-          letter-spacing: 0.1rem;
-          font-weight: bold;
+          font-family: $NotoSans-B;
           color: #000;
           font-size: 12px;
-          line-height: 14px;
+          line-height: 0.875rem;
+          letter-spacing: 0.1rem;
+          font-weight: bold;
         }
 
         .button-icon {
@@ -841,6 +1152,86 @@ section {
           right: 2px;
           padding: 0.5rem;
           ;
+        }
+      }
+    }
+  }
+}
+
+
+footer#footer{
+  position: relative;
+  background-color: black;
+  color: #FFF;
+  padding: 2.6rem 2.6rem;
+  @include pc {
+    padding: 40px 0 0;
+  }
+  .section-inner{
+    width: 100%;
+    @include pc {
+      max-width: 1340px;
+      margin: 0 auto;
+      padding: 0;
+    }
+  }
+  .footer-title{
+    font-family: $Ubuntu-B;
+    font-size: 32px;
+    line-height: 37px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    letter-spacing: 0.1rem;
+    @include pc {
+      font-size: 39px;
+      line-height: 45px;
+    }
+  }
+  .footer-title-sub{
+    font-family: $NotoSans-B;
+    font-size: 15px;
+    line-height: 18px;
+    font-weight: bold;
+    margin-bottom: 52px;
+    letter-spacing: 0.24rem;
+    @include pc {
+      margin-bottom: 16px;
+    }
+  }
+  .copyright{
+    font-family: $NotoSans-B;
+    font-size: 10px;
+    line-height: 12px;
+    font-weight: bold;
+    letter-spacing: 0.1rem;
+    @include pc {
+      text-align: center;
+    }
+  }
+  .pc-menu {
+    position: absolute;
+    background-color: #000;
+    li {
+      padding: 16px 32px 16px 0;
+      border-right: none;
+      font-size: 16px;
+      line-height: 19px;
+      letter-spacing: 0.1rem;
+      border-bottom: none;
+      a{
+        border-left: 1px solid #FFF;
+        padding: 0 0 0 32px;
+        img{
+          display: none;
+        }
+      }
+      &.menu-contact {
+        background-color: #00377E;
+        a{
+          border: none;
+          img{
+            display: inline-block;
+          }
         }
       }
     }
