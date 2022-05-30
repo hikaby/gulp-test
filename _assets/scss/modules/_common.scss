@@ -226,17 +226,20 @@ header {
     ul {
       list-style: none;
       display: flex;
+      border-top:none;
 
       li {
-        font-size: 16px;
-        border-right: 1px solid rgba(255, 255, 255, 0.14);
-        padding: 8px 32px;
+        font-size: 14px;
+        padding: 4px 0;
+        line-height: 14px;
         display: flex;
         align-items: center;
         justify-content: space-between;
 
         a {
           width: 100%;
+          border-right: 1px solid #FFF;
+          padding: 0 32px;
           color: #fff;
           display: flex;
           align-items: center;
@@ -246,6 +249,11 @@ header {
             margin-left: 16px;
           }
         }
+        &:nth-child(3){
+          a{
+            border-right: none;
+          }
+          }
       }
     }
   }
@@ -284,7 +292,7 @@ section {
     width: 100%;
 
     @include pc {
-      max-width: 1340px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 5rem 80px 3rem;
     }
@@ -382,7 +390,7 @@ section {
 
     @include pc {
       position: relative;
-      max-width: 1340px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 48vh 60px 120px;
       height: 100vh;
@@ -452,7 +460,7 @@ section {
       right: auto;
       left: 50%;
       bottom: 0;
-      margin-left: -670px;
+      margin-left: -600px;
     }
 
     span {
@@ -505,8 +513,8 @@ main{
       position: absolute;
       top: 0;
       left: 50%;
-      margin-left: -670px;
-      width: 1340px;
+      margin-left: -600px;
+      width: 1200px;
       height: 100%;
       border: 1px solid #ECECEC;
       z-index: -1;
@@ -540,10 +548,16 @@ main{
     display: flex;
     align-items: center;
     justify-content: left;
-    font-family: $Ubuntu-R;
+    font-family: $Ubuntu-B;
     font-size: 0.875rem;
     line-height: 16px;
-    letter-spacing: 0.1rem;
+    letter-spacing: 0.12rem;
+    span{
+      color: #00377E;
+      &:last-child{
+        padding-left: 0.5rem;
+      }
+    }
     @include pc {
       font-size: 20px;
       line-height: 24px;
@@ -615,7 +629,7 @@ main{
     background-position: bottom right;
     padding: 2rem 1.8rem 6rem;
     background-image: url(../img/ourBusiness-bg002.svg);
-    background-size: 1200px;
+    background-size: 1100px;
   }
   .section-inner {
     @include pc {
@@ -701,7 +715,7 @@ main{
 
   .section-button {
     margin-bottom: 10px;
-    background-color: transparent;
+    // background-color: transparent;
 
     .button-label {
       color: #226DE4;
@@ -723,7 +737,7 @@ main{
 
   .section-inner {
     @include pc {
-      max-width: 1340px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 5rem 10px 3rem;
     }
@@ -783,6 +797,7 @@ main{
       right: -18px;
       @include pc {
         right: -22px;
+        // right: -10px;
       }
 
       &:before {
@@ -797,8 +812,8 @@ main{
       left: -18px;
       @include pc {
         left: -22px;
+        // left: -10px;
       }
-
       &:before {
         background: url(../img/slider_arrow-left.png);
         background-size: contain;
@@ -1170,7 +1185,7 @@ footer#footer{
   .section-inner{
     width: 100%;
     @include pc {
-      max-width: 1340px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 0;
     }
@@ -1212,14 +1227,14 @@ footer#footer{
     position: absolute;
     background-color: #000;
     li {
-      padding: 16px 32px 16px 0;
-      border-right: none;
-      font-size: 16px;
-      line-height: 19px;
+      padding: 20px 32px 20px 0;
+      font-size: 14px;
+      line-height: 14px;
       letter-spacing: 0.1rem;
       border-bottom: none;
       a{
         border-left: 1px solid #FFF;
+        border-right: none;
         padding: 0 0 0 32px;
         img{
           display: none;
